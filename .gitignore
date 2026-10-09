@@ -1,0 +1,6 @@
+node_modules
+.convex
+dist
+.env.local
+.env*.local
+*.log
