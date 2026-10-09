@@ -213,6 +213,34 @@ button {
   height: 100%;
 }
 
+.tree-hero > canvas:not(.tree-scene) {
+  opacity: 0;
+}
+
+.tree-hero.is-fallback > canvas:not(.tree-scene) {
+  opacity: 1;
+}
+
+.tree-hero canvas.tree-scene {
+  z-index: 1;
+  inset: auto;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.tree-hero.is-scene .tree-scene {
+  opacity: 1;
+}
+
+.tree-scene-src {
+  position: absolute;
+  width: 0;
+  height: 0;
+  opacity: 0;
+  pointer-events: none;
+}
+
+
 .hero-ground {
   position: absolute;
   left: 50%;
