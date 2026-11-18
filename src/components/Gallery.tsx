@@ -13,7 +13,7 @@ interface GalleryProps {
 const PAGE = 24;
 
 export function Gallery({ canUpload, onOverlayChange }: GalleryProps) {
-  const [album, setAlbum] = useState<Album>("iglesia");
+  const [album, setAlbum] = useState<Album>("civil");
   const [open, setOpen] = useState<number | null>(null);
   const { results, status, loadMore } = usePaginatedQuery(
     api.photos.list,
@@ -38,7 +38,7 @@ export function Gallery({ canUpload, onOverlayChange }: GalleryProps) {
   }, [status, loadMore]);
 
   const photos = results as Photo[];
-  const albumLabel = ALBUMS.find((a) => a.id === album)!.label;
+  const current = ALBUMS.find((a) => a.id === album)!;
 
   return (
     <section id="galeria" className="gallery">
@@ -62,12 +62,12 @@ export function Gallery({ canUpload, onOverlayChange }: GalleryProps) {
         </div>
       </div>
 
-      <Uploader album={album} albumLabel={albumLabel} canUpload={canUpload} />
+      <Uploader album={album} albumLabel={current.label} canUpload={canUpload} />
 
       {status === "LoadingFirstPage" ? (
         <p className="empty">Cargando fotos…</p>
       ) : photos.length === 0 ? (
-        <p className="empty">Todavía no hay fotos de {albumLabel.toLowerCase()}. ¡Subí la primera!</p>
+        <p className="empty">Todavía no hay fotos de {current.phrase}. ¡Subí la primera!</p>
       ) : (
         <div className="grid">
           {photos.map((p, i) => (

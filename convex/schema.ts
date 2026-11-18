@@ -2,7 +2,7 @@ import { defineSchema, defineTable } from "convex/server";
 import { authTables } from "@convex-dev/auth/server";
 import { v } from "convex/values";
 
-export const albumValidator = v.union(v.literal("iglesia"), v.literal("fiesta"));
+export const albumValidator = v.union(v.literal("civil"), v.literal("misa"), v.literal("fiesta"));
 
 export default defineSchema({
   ...authTables,
